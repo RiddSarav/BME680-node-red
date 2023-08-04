@@ -1,0 +1,127 @@
+[
+    {
+        "id": "4b516f5f04ca8980",
+        "type": "tab",
+        "label": "Graph Data",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "ab5351ca45afb7ba",
+        "type": "inject",
+        "z": "4b516f5f04ca8980",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 440,
+        "y": 140,
+        "wires": [
+            [
+                "5b7d6bc2b16d1d21"
+            ]
+        ]
+    },
+    {
+        "id": "9176e69ce927103c",
+        "type": "chartjs-line",
+        "z": "4b516f5f04ca8980",
+        "name": "",
+        "path": "view",
+        "charttitle": "T v T",
+        "xaxis": "Timestamp",
+        "yaxis": "Temperature",
+        "x": 1070,
+        "y": 580,
+        "wires": [
+            [
+                "9674e81b06b9fad2"
+            ]
+        ]
+    },
+    {
+        "id": "9674e81b06b9fad2",
+        "type": "debug",
+        "z": "4b516f5f04ca8980",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1200,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "9038d2d0986a82d7",
+        "type": "file in",
+        "z": "4b516f5f04ca8980",
+        "name": "",
+        "filename": "/home/pi/Documents/filez.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 670,
+        "y": 140,
+        "wires": [
+            [
+                "921e2039420a37ce"
+            ]
+        ]
+    },
+    {
+        "id": "921e2039420a37ce",
+        "type": "json",
+        "z": "4b516f5f04ca8980",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 1230,
+        "y": 340,
+        "wires": [
+            [
+                "9176e69ce927103c"
+            ]
+        ]
+    },
+    {
+        "id": "5b7d6bc2b16d1d21",
+        "type": "exec",
+        "z": "4b516f5f04ca8980",
+        "command": "/usr/bin/python3 /home/pi/Documents/dummy.py",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 700,
+        "y": 460,
+        "wires": [
+            [
+                "9038d2d0986a82d7"
+            ],
+            [],
+            []
+        ]
+    }
+]
